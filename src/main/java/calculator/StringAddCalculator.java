@@ -5,6 +5,9 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
 
+  private static final String DELIMITER_REGEX = "[,:]";
+  public static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
+
   public static int splitAndSum(String text) {
     if (isBlank(text)) {
       return 0;
@@ -13,12 +16,12 @@ public class StringAddCalculator {
   }
 
   private static String[] split(String text) {
-    Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(text);
+    Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(text);
     if (matcher.find()) {
       String customDelimiter = matcher.group(1);
       return matcher.group(2).split(customDelimiter);
     }
-    return text.split("[,:]");
+    return text.split(DELIMITER_REGEX);
   }
 
   private static int sum(String[] tokens) {
