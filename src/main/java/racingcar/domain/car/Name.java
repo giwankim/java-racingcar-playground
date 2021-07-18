@@ -1,5 +1,6 @@
 package racingcar.domain.car;
 
+import java.util.Objects;
 import utils.StringUtils;
 
 public class Name {
@@ -28,6 +29,23 @@ public class Name {
     }
 
     public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Name)) {
+            return false;
+        }
+        Name name1 = (Name) o;
+        return Objects.equals(getName(), name1.getName());
+    }
+
+    @Override
+    public String toString() {
         return name;
     }
 }
