@@ -6,11 +6,19 @@ public class Position {
 
     private final int position;
 
+    public Position() {
+        this(0);
+    }
+
     public Position(int position) {
         if (position < 0) {
-            throw new IllegalArgumentException("position은 음수가 될수 없습니다.");
+            throw new IllegalArgumentException("position 은 음수가 될수 없습니다.");
         }
         this.position = position;
+    }
+
+    public Position move() {
+        return new Position(position + 1);
     }
 
     @Override

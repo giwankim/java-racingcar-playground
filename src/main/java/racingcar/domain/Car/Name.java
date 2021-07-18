@@ -1,14 +1,15 @@
 package racingcar.domain.Car;
 
 import java.util.Objects;
+import racingcar.utils.StringUtils;
 
 public class Name {
 
     private final String name;
 
     public Name(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름이 비어 있습니다.");
+        if (StringUtils.isBlank(name)) {
+            throw new IllegalArgumentException("자동차 이름 값이 존재하지 않습니다.");
         }
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
